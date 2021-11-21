@@ -1,28 +1,21 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-require("dotenv").config();
+const userRouter = require("./routes/userRoutes");
 
 const port = process.env.PORT || 3000;
-const path = require("path");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.use('/pictures',)
+const uri = process.env.MONGO_URI;
 
-(async function () {
-  try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
-    console.log("Connected to database");
-  } catch (err) {
-    throw new Error(err);
-  }
-})();
+mongoose.connect(
+  "mongodb+srv://justin:KoLOsJLCTQ1SEMfy@cluster0.muekg.mongodb.net/photoScenicus?retryWrites=true&w=majority"
+);
+
+app.use(userRouter);
 
 app.use((req, res) =>
   res.status(404).send("This is not the page you're looking for...")
