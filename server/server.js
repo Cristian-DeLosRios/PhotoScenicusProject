@@ -1,19 +1,17 @@
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const userRouter = require("./routes/userRoutes");
+
+console.log(process.env.MONGO_URI);
 
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const uri = process.env.MONGO_URI;
-
-mongoose.connect(
-  "mongodb+srv://justin:KoLOsJLCTQ1SEMfy@cluster0.muekg.mongodb.net/photoScenicus?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.MONGO_URI);
 
 app.use(userRouter);
 

@@ -2,6 +2,7 @@ const express = require("express");
 const userModel = require("../models/user");
 const app = express();
 
+// GET
 app.get("/users", async (request, response) => {
   const users = await userModel.find({});
 
@@ -12,6 +13,7 @@ app.get("/users", async (request, response) => {
   }
 });
 
+// POST
 app.post("/user", async (request, response) => {
   const user = new userModel(request.body);
 
@@ -23,6 +25,7 @@ app.post("/user", async (request, response) => {
   }
 });
 
+// PATCH
 app.patch("/user/:id", async (request, response) => {
   try {
     await userModel.findByIdAndUpdate(request.params.id, request.body);
@@ -33,6 +36,7 @@ app.patch("/user/:id", async (request, response) => {
   }
 });
 
+// DELETE
 app.delete("/user/:id", async (request, response) => {
   try {
     const user = await userModel.findByIdAndDelete(request.params.id);
