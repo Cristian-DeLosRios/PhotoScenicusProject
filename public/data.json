@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "_id": "salkfsdalfjlasjfasdl",
+      "url": "./public/Pic1.jpg",
+      "title": "Canyon"
+    },
+    {
+      "_id": "salkfsdsdsdsewefrm",
+      "url": "./public/Pic2.jpg",
+      "title": "Lake"
+    },
+    {
+      "_id": "salkfsdaevtjgtjgrasdn",
+      "url": "./public/Pic3.jpg",
+      "title": "Field"
+    }
+  ]
+}

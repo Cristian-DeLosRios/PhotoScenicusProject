@@ -4,13 +4,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path'); 
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+//path to data.json
+app.use('/data', express.static(path.join(__dirname, 'data.json')));
 
-
-//app.use('/pictures',)
 
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 
