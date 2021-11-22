@@ -6,20 +6,23 @@ import styled, { css } from 'styled-components';
 //     "location": { "city": "East Jairo", "state": "Oklahoma" },
 //     "rating": 5,
 //     "creatorId": "sdafsafsdafdasfsaf"
-const createrid = styled.h3`
+const Createrid = styled.h3`
   z-index: 10;
   font-size: 1.5em;
-  text-align: center;
-  color: palegoldenrod;
+  text-align: start;
+  color: black;
 `;
 const Rating = styled.h2`
+
   z-index: 10;
   font-size: 1.5em;
   text-align: center;
   color: black;
+  font-weight: bold;
 `;
 
 const Title = styled.h1`
+ 
   z-index: 10;
   font-size: 1.5em;
   text-align: center;
@@ -27,19 +30,18 @@ const Title = styled.h1`
 `;
 
 const CardStyles = styled.div`
+  max-height:100%;
   border: 1px solid gray;
   flex-direction: column;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: fit-content;
-  height: fit-content;
-  min-width: 250px;
+  justify-content: space-around;
+  overflow-y: wrap;
   background: linear-gradient(to bottom, #0064eee3, #6200ee00);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.44);
   border-radius: 18px;
-  margin: 5px 5px;
-  overflow: hidden;
+   
+  
   &:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.44),
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -49,16 +51,13 @@ const CardStyles = styled.div`
 
 const Image = styled.img`
   z-index: 1;
-  margin-top: -2.5%;
-  width: 200px;
-  height: 200px;
+  
+  width: 80%;
+  height: 80%;
   padding: 1.5%;
-  object-fit: background;
-  /* background-color: white; */
-  /* border: 1px solid gray; */
+  object-fit: cover;
   box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.3);
-  /* background-color: skyblue; */
-  border-radius: 10px;
+  border-radius: 7px;
 `;
 
 export default function ImageCard(props) {
@@ -72,6 +71,7 @@ export default function ImageCard(props) {
       <Title>{props.title}</Title>
       <Image src={props.url} />
       <Rating>rating {props.rating}</Rating>
+      
     </CardStyles>
   );
 }
