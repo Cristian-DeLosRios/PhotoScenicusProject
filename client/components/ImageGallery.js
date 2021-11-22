@@ -11,6 +11,7 @@ const GalleryStyles = styled.div`
 
 export default function ImageGallery() {
   const images = useContext(AppContext);
+  // const images = [{}, {}, {}, {}]
   console.log(images);
   return (
     <GalleryStyles>

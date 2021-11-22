@@ -16,10 +16,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use('/data', (req, res) => {
-//   res.json(data);
-// });
-// console.log(data);
+app.use('/data', (req, res) => {
+  res.json(data);
+});
+console.log(data);
+
 mongoose.connect(uri);
 
 

@@ -54,7 +54,7 @@ app.delete("/images/:id", async (request, response) => {
     const image = await ImageModel.find({ location: state });
 
     if (!image)
-        response.status(404).send("Unable to find images in that state");
+        response.status(404).send("Unable to fiznd images in that state");
     
     res.set('Content-Type', 'application/json').status(200).send(image);
  
