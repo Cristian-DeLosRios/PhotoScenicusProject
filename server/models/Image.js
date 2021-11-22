@@ -1,38 +1,25 @@
-const mongoose = require('mongoose');
-// username 
-// password
-// location {state,city}
-
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ImageSchema = new Schema({
-    //db gives id
-
-    url: {type: String},
-
+const imageSchema = new Schema(
+  {
+    url: { type: String },
+    title: { type: String },
     location: {
-        city: {type :String, required: true},
-        state: {type :String, required: true} //{state,city}
-    
+      city: { type: String, required: true },
+      state: { type: String, required: true },
     },
     rating: {
-        type: Number
+      type: Number,
     },
-    CreaterId:{
-        type: String,
-        required: true
-    }
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  },
+  { timestamps: true }
+);
 
-});
+const Image = mongoose.model("Image", imageSchema);
 
-const Image = mongoose.model('Img', ImageSchema);
 module.exports = Image;
-
-
-
-
-//DO NOT DELETE
-//signup/signin => user .... userId.
-
-//upload image Image.create({url: '''', userId: })
-

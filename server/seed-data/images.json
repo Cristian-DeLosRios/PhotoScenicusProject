@@ -4,6 +4,6 @@
     "title": "Desert Canyon",
     "location": { "city": "East Jairo", "state": "Oklahoma" },
     "rating": 5,
-    "creatorId": "619a9cf7e0a0b0f9c8a64108"
+    "user": "619a9cf7e0a0b0f9c8a64108"
   }
 ]
