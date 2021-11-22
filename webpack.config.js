@@ -3,14 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  // mode: 'development',
   entry: path.resolve(__dirname, 'client', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'bundle.js',
+   
   },
+
   devServer: {
+    // static: '/public',
+  
     open: true,
     port: 8080,
+    //compress: true,
+   
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
@@ -55,3 +62,45 @@ module.exports = {
     }),
   ],
 };
+// const path = require('path');
+
+// module.exports = {
+//   mode: process.env.NODE_ENV,
+//   entry: './client/index.js',
+//   //entry: ['babel-polyfill', './client/index.js'],
+//   output: {
+//     path: path.resolve(__dirname, 'build'),
+//     filename: 'bundle.js',
+//   },
+//   devServer: {
+//     // DEV SAVES BUNDLE IN MEMORY RATHER THANK DISK, MORE EFFICIENT
+//     publicPath: '/build/', // Removes 404 error for the route /build/bundle.js
+//     compress: true,
+//     port: 8080,
+//     proxy: {
+//       '/api': {
+//         target: 'http://localhost:3000',
+//         pathRewrite: { '^/api': '' },
+//       },
+//     },
+//     historyApiFallback: true,
+//   },
+//   // (?!(\/|\\)pdfjs-dist)
+//   module: {
+//     rules: [
+//       {
+//         test: /\.jsx?/,
+//         exclude: /node_modules/,
+//         use: {
+//           loader: 'babel-loader',
+//           options: {
+//             presets: ['@babel/preset-env', '@babel/preset-react'],
+//           },
+//         },
+//       },
+//     ],
+//   },
+//   node: {
+//     fs: 'empty',
+//   },
+// };

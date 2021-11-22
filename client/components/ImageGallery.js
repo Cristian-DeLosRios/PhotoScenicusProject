@@ -7,6 +7,8 @@ const GalleryStyles = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: lightblue;
+  grid-row-start: imageGallery;
+  grid-row-end: 2;
 `;
 
 export default function ImageGallery() {

@@ -3,3 +3,5 @@ build
 npm-debug.log*
 node_modules/
 dist/bundle.js
+.eslintrc
+.prettierrc
