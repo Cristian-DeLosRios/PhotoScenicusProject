@@ -48,14 +48,6 @@ module.exports = {
       },
     ],
   },
-  // stats: {
-  //   colors: true,
-  //   reasons: true,
-  //   chunks: true,
-  // },
-  // resolve: {
-  //   extensions: ['*', '.js', '.jsx'],
-  // },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({

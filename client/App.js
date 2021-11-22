@@ -1,4 +1,5 @@
-import React, { useEffect, useContext, useState } from 'react';
+/* eslint-disable */
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import Carousel from './components/Carousel';
@@ -13,16 +14,18 @@ const AppStyles = styled.div`
 
 export default function App() {
   const [images, setImages] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch('/api/data')
+    fetch('/api/images')
       .then((res) => res.json())
       .then((images) => {
-        if (!Array.isArray(images)) images = [];
+        if (!Array.isArray(images)) {
+          images = [];
+        }
         return setImages(images);
       })
       .catch((err) => {
-        // Do something for an error here
         console.log('Error Reading data ' + err);
       });
   }, [setImages]);
