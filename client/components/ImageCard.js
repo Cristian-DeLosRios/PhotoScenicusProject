@@ -1,32 +1,64 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-
-
-
 // "url": "Susan_Von5",
 //     "title": "Desert Canyon",
 //     "location": { "city": "East Jairo", "state": "Oklahoma" },
 //     "rating": 5,
 //     "creatorId": "sdafsafsdafdasfsaf"
+const createrid = styled.h3`
+  z-index: 10;
+  font-size: 1.5em;
+  text-align: center;
+  color: palegoldenrod;
+`;
+const Rating = styled.h2`
+  z-index: 10;
+  font-size: 1.5em;
+  text-align: center;
+  color: black;
+`;
+
+const Title = styled.h1`
+  z-index: 10;
+  font-size: 1.5em;
+  text-align: center;
+  color: white;
+`;
 
 const CardStyles = styled.div`
-  border: 2px solid black;
+  border: 1px solid gray;
+  flex-direction: column;
   display: flex;
   align-items: center;
-  width: 20vw;
-  height: 20vh;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background: lightblue;
-  margin: 1vw;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  min-width: 250px;
+  background: linear-gradient(to bottom, #0064eee3, #6200ee00);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.44);
+  border-radius: 18px;
+  margin: 5px 5px;
+  overflow: hidden;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.44),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.05);
+  }
 `;
 
 const Image = styled.img`
-  
-  width: 100%;
-  height: 100%;
-  background-color: purple;
-  border-radius: 18px;
+  z-index: 1;
+  margin-top: -2.5%;
+  width: 200px;
+  height: 200px;
+  padding: 1.5%;
+  object-fit: background;
+  /* background-color: white; */
+  /* border: 1px solid gray; */
+  box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.3);
+  /* background-color: skyblue; */
+  border-radius: 10px;
 `;
 
 export default function ImageCard(props) {
@@ -36,18 +68,11 @@ export default function ImageCard(props) {
   //   });
 
   return (
-   
     <CardStyles>
-      <h1>{props.title}</h1>
-      {/* <img src={require('../../public/Pic1.jpg')} /> */}
-
-      {/* <img src={require('./public/Pic1.jpg')} /> */}
+      <Title>{props.title}</Title>
       <Image src={props.url} />
-
-      <h2>rating {props.rating}</h2>
-      {/* <h2>Photo taken by: {creatorName}</h2> */}
+      <Rating>rating {props.rating}</Rating>
     </CardStyles>
-    
   );
 }
 

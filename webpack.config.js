@@ -1,28 +1,28 @@
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  // mode: 'development',
+  mode: 'development',
   entry: path.resolve(__dirname, 'client', 'index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
-   
   },
 
   devServer: {
     // static: '/public',
-  
+    publicPath: '/build/',
     open: true,
     port: 8080,
     //compress: true,
-   
+
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        pathRewrite: { '^/api': '' },
-      },
+      '/': 'http://localhost:3000',
+      // '/api': {
+      //   target: 'http://localhost:3000',
+      //   pathRewrite: { '^/api': '' },
+      // },
     },
     historyApiFallback: true,
   },
@@ -55,12 +55,12 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: './client/index.html',
-    }),
-  ],
+  // plugins: [
+  //   new webpack.HotModuleReplacementPlugin(),
+  //   new HtmlWebpackPlugin({
+  //     template: './client/index.html',
+  //   }),
+  // ],
 };
 // const path = require('path');
 

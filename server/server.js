@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const userRouter = require('./routes/userRoutes');
 const imageRouter = require('./routes/imageRoutes');
-const cors = require('cors')//new
+const cors = require('cors'); //new
 
 // const uri = process.env.MONGO_URI;
 
@@ -16,7 +16,12 @@ const path = require('path');
 
 //api/static
 
-//app.use("/static", express.static(path.join(__dirname ,'public')));
+app.use('/build', express.static(path.join(__dirname, '../build')));
+app.get('/', (req, res) => {
+  return res
+    .status(200)
+    .sendFile(path.resolve(__dirname, '../client/index.html'));
+});
 
 // app.use('/data', (req, res) => {
 //   res.json(data);

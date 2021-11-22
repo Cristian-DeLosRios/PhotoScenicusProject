@@ -1,14 +1,16 @@
 /* eslint-disable */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Navbar from './components/Navbar';
-import Carousel from './components/Carousel';
+import Hero from './components/Hero';
 import ImageGallery from './components/ImageGallery';
 import AppContext from './context';
+import Footer from './components/Footer';
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin:0;
+    font-family: 'Raleway', 'sans-serif';
   }
 `;
 
@@ -30,11 +32,14 @@ const ContentStyles = styled.div`
 `;
 
 export default function App() {
+  // const AppContext = createContext([]);
   const [images, setImages] = useState([]);
+  //const [query, setQuery] = useState('');
+
   // const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch('/api/images')
+    fetch('/images')
       .then((res) => res.json())
       .then((images) => {
         console.log(images);
@@ -51,12 +56,14 @@ export default function App() {
   return (
     <AppContext.Provider value={images}>
       <AppStyles>
+        <GlobalStyle />
         <Navbar />
+        {/* <SignIn/> */}
         <ContentStyles>
-          <Carousel />
+          <Hero />
           <ImageGallery />
         </ContentStyles>
-        <GlobalStyle />
+        <Footer />
       </AppStyles>
     </AppContext.Provider>
   );

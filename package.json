@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node server/server.js",
-    "dev": "cross-env NODE_ENV=development concurrently  \"nodemon server/server.js\" \"webpack-dev-server --open\"",
+    "dev": "cross-env NODE_ENV=development concurrently  \"webpack --watch\" \"nodemon server/server.js\"",
+    "dev3": "concurrently \"cross-env NODE_ENV=development webpack serve --open --hot\" \"cross-env NODE_ENV=development nodemon server/server.js --ignore '*.json'\"",
     "build": "cross-env NODE_ENV=production webpack",
     "dev2": "webpack-dev-server -- --mode development",
     "webpack": "webpack --watch",
@@ -16,11 +17,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@popperjs/core": "^2.10.2",
     "babel-plugin-styled-components": "^1.13.3",
     "concurrently": "^6.4.0",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "embla-carousel-react": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
@@ -64,7 +65,7 @@
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-middleware": "^5.2.2",
-    "webpack-dev-server": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
     "webpack-hot-middleware": "^2.25.1"
   }
 }
