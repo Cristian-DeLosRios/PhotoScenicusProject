@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import ImageCard from './ImageCard';
+import AppContext from '../context';
 
 const GalleryStyles = styled.div`
   width: 100vw;
@@ -7,11 +9,13 @@ const GalleryStyles = styled.div`
   background-color: lightblue;
 `;
 
-export default function ImageGallery(props) {
+export default function ImageGallery() {
+  const images = useContext(AppContext);
+  console.log(images);
   return (
     <GalleryStyles>
-      {props.images.map((image) => {
-        return <ImageCard {...image} key={image._id}/>;
+      {images.map((image) => {
+        return <ImageCard {...image} key={image._id} />;
       })}
     </GalleryStyles>
   );

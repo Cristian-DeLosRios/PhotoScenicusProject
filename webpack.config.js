@@ -1,19 +1,25 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, "client", "index.js"),
+  entry: path.resolve(__dirname, 'client', 'index.js'),
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   },
   devServer: {
     open: true,
     port: 8080,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/api': '' },
+      },
+    },
     historyApiFallback: true,
   },
-  devtool: "eval-source-map",
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -21,35 +27,39 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               presets: [
                 [
-                  "@babel/preset-env",
+                  '@babel/preset-env',
                   {
-                    targets: "defaults",
+                    targets: 'defaults',
                   },
                 ],
-                "@babel/preset-react",
+                '@babel/preset-react',
               ],
             },
           },
         ],
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: 'file-loader',
+      },
     ],
   },
-  stats: {
-    colors: true,
-    reasons: true,
-    chunks: true,
-  },
-  resolve: {
-    extensions: ["*", ".js", ".jsx"],
-  },
+  // stats: {
+  //   colors: true,
+  //   reasons: true,
+  //   chunks: true,
+  // },
+  // resolve: {
+  //   extensions: ['*', '.js', '.jsx'],
+  // },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: "./client/index.html",
+      template: './client/index.html',
     }),
   ],
 };

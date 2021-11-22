@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import Navbar from './components/Navbar';
 import Carousel from './components/Carousel';
@@ -12,37 +12,29 @@ const AppStyles = styled.div`
 `;
 
 export default function App() {
-  const { images, setImages } = useContext(AppContext);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch('/data')
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then(({ images }) => {
+    fetch('/api/data')
+      .then((res) => res.json())
+      .then((images) => {
+        if (!Array.isArray(images)) images = [];
         return setImages(images);
-        //console.log(data);
       })
       .catch((err) => {
         // Do something for an error here
         console.log('Error Reading data ' + err);
       });
-  }, [images]);
-
-  // useEffect(() => {
-  //   fetch(data)
-  //     .then((data) => data.json())
-  //     .then(({ images }) => {
-  //       return setImages(images);
-  //     });
-  // }, [images]);
+  }, [setImages]);
 
   return (
-    <AppStyles>
-      <Navbar />
-      <Carousel />
-      <ImageGallery images={images} />
-    </AppStyles>
+    <AppContext.Provider value={images}>
+      <AppStyles>
+        <Navbar />
+        {/* <img src={Pic1} alt="" /> */}
+        <Carousel />
+        <ImageGallery />
+      </AppStyles>
+    </AppContext.Provider>
   );
 }
