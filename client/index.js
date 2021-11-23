@@ -30,3 +30,26 @@ render(
   </BrowserRouter>,
   rootElement
 );
+
+// import React from 'react';
+// import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom';
+// import { render } from 'react-dom';
+// import App from './App';
+// const rootElement = document.getElementById('root');
+// import AboutUs from './pages/aboutus';
+// import Landing from './pages/landing';
+
+// render(
+//   <BrowserRouter>
+//     <Routes>
+//       <Route path="/" element={<App />}>
+//         <Route path="/" render={() => <Redirect to="/landing" />} />
+//         <Route path="/landing" element={<Landing />} />
+//         <Route path="/aboutus" element={<AboutUs />} />
+//         {/* <Route path="signin" element={<SignIn />} />
+//         <Route path="home" element={<Home />} /> */}
+//       </Route>
+//     </Routes>
+//   </BrowserRouter>,
+//   rootElement
+// );

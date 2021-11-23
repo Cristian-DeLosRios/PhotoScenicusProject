@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from '../../public/photo.png';
 
 const NavBarStyles = styled.div`
   display: grid;
@@ -15,7 +16,12 @@ const NavBarStyles = styled.div`
   );
 `;
 
-const Logo = styled.div``;
+const Logo = styled.div`
+  height: 100%;
+  width: 100%;
+  background-size: cover !important;
+  background: url(${logo}) no-repeat center;
+`;
 
 const Name = styled.h1`
   color: white;
