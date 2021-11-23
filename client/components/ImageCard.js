@@ -96,6 +96,7 @@ const Createrid = styled.h3`
   color: black;
 `;
 const Rating = styled.h2`
+
   z-index: 10;
   font-size: 1.5em;
   text-align: center;
@@ -104,6 +105,7 @@ const Rating = styled.h2`
 `;
 
 const Title = styled.h1`
+ 
   z-index: 10;
   font-size: 1.5em;
   text-align: center;
@@ -152,6 +154,7 @@ export default function ImageCard(props) {
       <Title>{props.title}</Title>
       <Image src={props.url} />
       <Rating>rating {props.rating}</Rating>
+      
     </CardStyles>
   );
 }
