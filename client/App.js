@@ -24,7 +24,6 @@ const AppStyles = styled.div`
 const ContentStyles = styled.div`
   height: 100%;
   width: 100%;
-  background-color: lightgreen;
   display: grid;
   grid-row-start: contents;
   grid-row-end: 2;
@@ -34,7 +33,7 @@ const ContentStyles = styled.div`
 export default function App() {
   // const AppContext = createContext([]);
   const [images, setImages] = useState([]);
-  //const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('');
 
   // const [user, setUser] = useState(null);
 
@@ -54,7 +53,7 @@ export default function App() {
   }, [setImages]);
 
   return (
-    <AppContext.Provider value={images}>
+    <AppContext.Provider value={{ images, query, setQuery }}>
       <AppStyles>
         <GlobalStyle />
         <Navbar />

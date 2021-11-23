@@ -12,7 +12,7 @@ const HeroStyles = styled.div`
   display: grid;
 `;
 
-export default function Hero(props) {
+export default function Hero() {
   return (
     <HeroStyles>
       <Searchbar />
